@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import React, { useState } from 'react'
 import { Background, InnerForm, FormWrapper, InnerContent, FormContent } from './Styles'
 import { Product } from './Type'
@@ -8,11 +9,14 @@ type Props = {
 }
 
 
+
 const AddProductModal = ({ onSubmit, close }: Props) => {
 
   const [productName, setProductName] = useState("")
   const [productPrice, setProductPrice] = useState("")
-  const [productImage, setProductImage] = useState()
+  const [productImage, setProductImage] = useState<File>()
+  const [previewImage, setPreviewImage] = useState<string>()
+  const [loading, setLoading] = useState(false);
 
 
   // function to get product name
@@ -41,20 +45,47 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
   //     }
   // }
 
+  // const toBase64=(file: File)=> {
+  //   new Promise((resolve, reject)=> {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload=()=> resolve(reader.result);
+  //     reader.onerror =(error)=> reject(error)
+  //     return reader;
+  //   })
+  // }
+
+  // const onImageChange=(e:React.ChangeEvent<HTMLInputElement>)=> {
+  //   if(!e.target.files) return
+  //   const base64file = toBase64(e.target.files[0])
+  //   if(e.target.files && e.target.files[0]) {
+  //     setProductImage(base64file)
+  //   }
+  // }
+
+
 
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const target = e.currentTarget as HTMLInputElement;
     const file = target.files?.[0];
-    // const file = URL.createObjectURL(target.files[0]);
-    // setProductImage(URL.createObjectURL(e.target.files[0]));
-    console.log(file)
+    setProductImage(file)
+    setPreviewImage(URL.createObjectURL(file as Blob))
   }
 
+  // const dataForm = {
+  //   name: productName,
+  //   price: productPrice,
+  //   image: productImage
+  // }
   // function to submit
-  // const handleSubmit = () => {
-  //   console.log()
+  // const handleSubmit = () => 
+  //   onSubmit({
+  //     name: productName,
+  //     price: productPrice,
+  //     image: productImage
+  //   })
   // }
 
   return (
@@ -65,11 +96,12 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
         <FormContent>
           <div className='left__side'>
             <InnerContent>
-              {/* <img src={file} /> */}
+              {previewImage && <img src={previewImage} alt="" />} 
               <input
                 type="file"
                 name="image"
                 id="image"
+                // onChange={onImageChange}
                 onChange={handleImageUpload}
               />
             </InnerContent>
@@ -102,7 +134,8 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
         </FormContent>
 
         <div className='btn__btn'>
-          <button>Upload</button>
+          {/* <button>Upload</button> */}
+          <button disabled={loading}>{loading ? "Uploading..." : "Upload"}</button>
         </div>
       </FormWrapper>
     </Background>

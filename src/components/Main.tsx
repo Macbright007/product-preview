@@ -15,18 +15,18 @@ import { Product } from './Type'
 const Main = () => {
   const [showModal, setShowModal] = useState(false);
   const [products, setProducts] = useState<Product[]>([
-    {
-      name: "shoe",
-      price: 200
-    },
-    {
-      name: "shoees",
-      price: 300
-    },
-    {
-      name: "shoes",
-      price: 400
-    }
+    // {
+    //   name: "shoe",
+    //   price: 200
+    // },
+    // {
+    //   name: "shoees",
+    //   price: 300
+    // },
+    // {
+    //   name: "shoes",
+    //   price: 400
+    // }
   ])
 
   const openModal = () => {

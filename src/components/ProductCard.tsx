@@ -4,7 +4,8 @@ import { CardContainer, CardContent, ImgCard } from "./Styles";
 type Props = {
   item:{
     name: string,
-    price: number
+    price: string
+    // price: number
   }
 }
 
