@@ -2,34 +2,22 @@ import { useState } from 'react'
 import ProductCard from './ProductCard'
 import { ProductWrapper } from './Styles'
 import cart from "../images/shop.png"
+import { Product } from './Type'
+import Search from './Search'
+
 
 type Props = {
-  uploads: {
-    name: string,
-    price: number
-  }[]
+  openModal: () => void;
+  products: Product[]
 }
 
 
-const ProductLists = () => {
-  const [uploads, setUploads] = useState([
-    // {
-    //   name: "shoe",
-    //   price: 200
-    // },
-    // {
-    //   name: "shoees",
-    //   price: 300
-    // },
-    // {
-    //   name: "shoes",
-    //   price: 400
-    // }
-  ])
+const ProductLists = ({ products, openModal }: Props) => {
+
 
   return (
     <>
-      {uploads.length == 0 ?
+      {products.length === 0 ?
         (
           <div className="empty-cart">
             <img src={cart} className="img-fluid" alt="cart" />
@@ -37,14 +25,17 @@ const ProductLists = () => {
             <p style={{ color: "grey" }}>
               Add products to display
             </p>
-             <button>Click to Add Products</button>
+            <button onClick={openModal}>Click to Add Products</button>
           </div>
         ) : (
-          <ProductWrapper>
-            {uploads.map((item) => {
-              return <ProductCard item={item} />
-            })}
-          </ProductWrapper>
+          <>
+            <Search />
+            <ProductWrapper>
+              {products.map((item) => {
+                return <ProductCard item={item} />
+              })}
+            </ProductWrapper>
+          </>
         )
       }
     </>

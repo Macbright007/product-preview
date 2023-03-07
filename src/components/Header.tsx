@@ -1,13 +1,15 @@
 import React from 'react'
 import { Nav } from './Styles'
 
-type Props = {}
+type Props = {
+  openModal: () => void;
+}
 
-const Header = (props: Props) => {
+const Header = ({openModal}: Props) => {
   return (
     <Nav>
         <h1>logo</h1>
-        <button>Add Product</button>
+        <button onClick={openModal}>Add Product</button>
     </Nav>
   )
 }
