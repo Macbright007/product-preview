@@ -96,7 +96,9 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
         <FormContent>
           <div className='left__side'>
             <InnerContent>
-              {previewImage && <img src={previewImage} alt="" />} 
+              <div className='img-container'>
+                {previewImage && <img src={previewImage} alt="" />}
+              </div>
               <input
                 type="file"
                 name="image"

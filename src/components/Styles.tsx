@@ -114,6 +114,9 @@ export const FooterWrapper = styled.footer`
     border-left: 0px;
     border-right: 0px;
     border-bottom: 0px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 
     p{
         // color: white;
@@ -133,7 +136,7 @@ export const FormWrapper = styled.form`
     // left: 40%;
 
     width: 800px;
-    height: 50vh;
+    height: 55vh;
     padding: 3rem;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
     background: #fff;
@@ -185,7 +188,7 @@ export const FormWrapper = styled.form`
     .btn__btn{
         width: 100%;
         max-width: 200px;
-        margin: 1rem auto;
+        margin: 3rem auto;
     }
 
     .btn__btn button{
@@ -203,6 +206,33 @@ export const FormWrapper = styled.form`
         background:rgb(4, 71, 98);
         color: #fff;
     }
+
+    @media(max-width: 950px){
+        // background: red;
+        width: 270px;
+        top: 10%;
+        height: 65vh;
+        overflow-y: auto;
+
+        h1{
+            margin-top: -2rem;
+            margin-left: -2rem;
+            font-size: 25px;
+            position: fixed;
+        }
+        .close{
+            right: 1%;
+            top: 10%;
+            width: 55px;
+            height: 55px;
+        }
+
+        .right__side{
+            width: 100%;
+            margin-top: 2rem;
+        }
+       
+    }
 `
 
 export const FormContent = styled.div`
@@ -210,6 +240,13 @@ export const FormContent = styled.div`
     // border: 2px solid black;
     display: flex;
     justify-content: space-between;
+
+    @media(max-width: 950px){
+        flex-direction: column;
+        margin-top: 2rem;
+        margin-left: -2rem;
+        width: 326px;
+    }
 `
 export const Background = styled.div`
   width: 100%;
@@ -239,6 +276,12 @@ export const InnerForm = styled.div`
     input:focus{
         outline: none;
     }
+
+    @media(max-width: 950px){
+        input[type=text]{
+            margin-top: 2px;
+        }
+    }
 `
 export const InnerContent = styled.div`
     border: 3px dotted gray;
@@ -258,10 +301,29 @@ export const InnerContent = styled.div`
     }
     input[type=file]{
         padding: 10px;
-        margin-top: 7rem;
+        // margin-top: 7rem;
         width: 100%;
     }
     input:focus{
         outline: none;
+    }
+
+    .img-container{
+        // border: 2px solid black;
+        width: 200px;
+        height: 170px;
+    }
+
+    .img-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: fit;
+    }
+
+    @media(max-width: 950px){
+        height: 30vh;
+        max-width: 800px;
+
+
     }
     `
