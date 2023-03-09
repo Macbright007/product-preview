@@ -1,36 +1,33 @@
 import React from 'react'
 import { CardContainer, CardContent, ImgCard } from "./Styles";
+import { Product } from './Type'
 
 type Props = {
-  item:{
-    name: string,
-    price: string
-    // price: number
-  }
+  // item:{
+  //   name: string,
+  //   price: string
+  //   // price: number
+  // }
+  item: Product
+  DeleteProduct: (productId:string) => void
 }
 
-const ProductCard = ({item}: Props) => {
+const ProductCard = ({ item, DeleteProduct }: Props) => {
   return (
     <CardContainer>
-    <ImgCard>
-      {/* <img src={pic.image} alt="pic" /> */}
-      {/* <MdDeleteForever
-        style={{
-          position: "absolute",
-          top: 20,
-          right: 5,
-          fontSize: 33,
-          color: "#AB263A",
-          cursor: "pointer",
-        }}
-        onClick={() => handleDelete(pic)}
-      /> */}
-    </ImgCard>
-    <CardContent>
-      <h2>{item.name}</h2>
-      <p>{item.price}</p>
-    </CardContent>
-  </CardContainer>
+      <ImgCard>
+        <img src={item.image} alt="pic" />
+        <span
+        onClick={() => DeleteProduct(item.id)}
+        >
+          X
+        </span>
+      </ImgCard>
+      <CardContent>
+        <h2>{item.name}</h2>
+        <p>{item.price}</p>
+      </CardContent>
+    </CardContainer>
   )
 }
 

@@ -14,43 +14,36 @@ import { Product } from './Type'
 
 const Main = () => {
   const [showModal, setShowModal] = useState(false);
-  const [products, setProducts] = useState<Product[]>([
-    // {
-    //   name: "shoe",
-    //   price: 200
-    // },
-    // {
-    //   name: "shoees",
-    //   price: 300
-    // },
-    // {
-    //   name: "shoes",
-    //   price: 400
-    // }
-  ])
+  const [products, setProducts] = useState<Product[]>([])
+ 
 
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
 
 
-  const addProducts = (product:Product) => {
-    setProducts((state) => ([...state, product ]))
+  const addProducts = (product: Product) => {
+    setProducts((state) => ([...state, product]))
   }
 
+  const removeProduct = (productId:string | undefined) => {
+      const updatedProducts = products.filter((x) => x.id !== productId)
+        setProducts(updatedProducts);
+    
+  }
   // function to close modal
   const handleCloseModal = () => {
-      setShowModal(false)
+    setShowModal(false)
   }
-  
+
 
   return (
     <div>
       <Header openModal={openModal} />
-      <ProductLists openModal={openModal} products={products} />
+      <ProductLists openModal={openModal} products={products} onRemoveProduct={removeProduct} />
       {showModal &&
         <AddProductModal
-          close= {handleCloseModal}
+          close={handleCloseModal}
           onSubmit={addProducts}
         />}
       <Footer />

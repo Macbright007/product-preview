@@ -6,15 +6,28 @@ import { Product } from './Type'
 import Search from './Search'
 
 
+
 type Props = {
   openModal: () => void;
+  onRemoveProduct: (productId:string) => void;
   products: Product[]
 }
 
 
-const ProductLists = ({ products, openModal }: Props) => {
+const ProductLists = ({ products, openModal, onRemoveProduct }: Props) => {
+  const [searchValue, setSearchValue] = useState("")
+
+  const handleSearchChange = (val: string) => {
+    setSearchValue(val)
+}
 
 
+
+const filteredProducts = searchValue !== "" ? 
+products?.filter((productsItem) => productsItem.name.toLowerCase().includes(searchValue.toLowerCase()))
+: products
+
+console.log(products)
   return (
     <>
       {products.length === 0 ?
@@ -29,10 +42,10 @@ const ProductLists = ({ products, openModal }: Props) => {
           </div>
         ) : (
           <>
-            <Search />
+            <Search onChange={handleSearchChange} searchValue={searchValue} />
             <ProductWrapper>
-              {products.map((item) => {
-                return <ProductCard item={item} />
+              {filteredProducts.map((item) => {
+                return <ProductCard item={item} DeleteProduct={onRemoveProduct} />
               })}
             </ProductWrapper>
           </>

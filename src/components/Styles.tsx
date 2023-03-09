@@ -35,7 +35,7 @@ export const SearchWrapper = styled.form`
      max-width: 600px;
      margin: 2rem auto;
 
-     input[type=text]{
+     input[type=search]{
         border-top: 0px;
         border-left: 0px;
         border-right: 0px;
@@ -44,7 +44,7 @@ export const SearchWrapper = styled.form`
         padding: 9px 7px;
         width: 100%;
       }
-      input[type=text]::placeholder{
+      input[type=search]::placeholder{
         padding-left: 7px;
         font-size: 14px;
         font-weight: 700;
@@ -74,11 +74,27 @@ export const ImgCard = styled.div`
     border-top: 0;
     border-bottom: 0;
     padding: 7px;
-    height: 40vh;
+    height: 30vh;
     width: 100%;
     max-width: 230px;
     position: relative;
   
+    span{
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        background: white;
+        border-radius: 100%;
+        color: black;
+        font-weight: 800;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
 
     img{
         min-height: 100%;

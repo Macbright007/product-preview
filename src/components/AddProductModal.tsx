@@ -2,6 +2,7 @@ import { resolve } from 'path'
 import React, { useState } from 'react'
 import { Background, InnerForm, FormWrapper, InnerContent, FormContent } from './Styles'
 import { Product } from './Type'
+import { v4 as uuid } from 'uuid';
 
 type Props = {
   onSubmit: (product: Product) => void
@@ -14,8 +15,8 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
 
   const [productName, setProductName] = useState("")
   const [productPrice, setProductPrice] = useState("")
-  const [productImage, setProductImage] = useState<File>()
-  const [previewImage, setPreviewImage] = useState<string>()
+  // const [productImage, setProductImage] = useState<File>()
+  const [previewImage, setPreviewImage] = useState<string >()
   const [loading, setLoading] = useState(false);
 
 
@@ -29,14 +30,6 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
     setProductPrice(e.target.value)
 
   }
-
-  // function to get product image
-  // const handleImageUpload = (e?:HTMLInputEvent) => {
-  //   const files: any = e.target.files[0]
-  //   if(files.length) {
-  //     setProductImage(files[0])
-  //   }
-  // }
 
   // const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
   //     if (e.target.files && e.target.files.length > 0) { 
@@ -70,27 +63,26 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
     e.preventDefault();
     const target = e.currentTarget as HTMLInputElement;
     const file = target.files?.[0];
-    setProductImage(file)
+    // setProductImage(file)
     setPreviewImage(URL.createObjectURL(file as Blob))
   }
 
-  // const dataForm = {
-  //   name: productName,
-  //   price: productPrice,
-  //   image: productImage
-  // }
   // function to submit
-  // const handleSubmit = () => 
-  //   onSubmit({
-  //     name: productName,
-  //     price: productPrice,
-  //     image: productImage
-  //   })
-  // }
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    onSubmit({
+      id: uuid(),
+      name: productName,
+      price: Number(productPrice),
+      image: previewImage
+    })
+    close()
+  }
 
+  
   return (
     <Background>
-      <FormWrapper>
+      <FormWrapper onSubmit={handleSubmit}>
         <span className='close' onClick={close}>X</span>
         <h1><span>Upload</span> Product</h1>
         <FormContent>

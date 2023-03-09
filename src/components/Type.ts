@@ -1,5 +1,6 @@
 export type Product = {
+  id: string,
   name: string,
-  price: string,
-  image: File
+  price: number,
+  image: string | undefined
 }
