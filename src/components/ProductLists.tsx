@@ -45,6 +45,7 @@ const ProductLists = ({ products, openModal, onRemoveProduct }: Props) => {
           <>
             <Search onChange={handleSearchChange} searchValue={searchValue} />
             <ProductWrapper>
+              {filteredProducts.length < 1 && <p className='para'>no product found</p>}
               {filteredProducts.map((item) => {
                 return <ProductCard item={item} DeleteProduct={onRemoveProduct} />
               })}

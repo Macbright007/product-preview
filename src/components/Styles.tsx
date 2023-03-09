@@ -280,6 +280,13 @@ export const FormWrapper = styled.form`
             right: 7%;
         }
     }
+    @media(max-width: 550px){
+        width: 240px;
+
+        .close{
+            right: 5%;
+        }
+    }
 `
 
 export const FormContent = styled.div`
