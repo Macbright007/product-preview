@@ -9,7 +9,7 @@ import Search from './Search'
 
 type Props = {
   openModal: () => void;
-  onRemoveProduct: (productId:string) => void;
+  onRemoveProduct: (productId: string) => void;
   products: Product[]
 }
 
@@ -17,17 +17,18 @@ type Props = {
 const ProductLists = ({ products, openModal, onRemoveProduct }: Props) => {
   const [searchValue, setSearchValue] = useState("")
 
+  // function to handle search input
   const handleSearchChange = (val: string) => {
     setSearchValue(val)
-}
+  }
 
 
+  // function to filter on search
+  const filteredProducts = searchValue !== "" ?
+    products?.filter((productsItem) => productsItem.name.toLowerCase().includes(searchValue.toLowerCase()))
+    : products
 
-const filteredProducts = searchValue !== "" ? 
-products?.filter((productsItem) => productsItem.name.toLowerCase().includes(searchValue.toLowerCase()))
-: products
 
-console.log(products)
   return (
     <>
       {products.length === 0 ?
@@ -48,6 +49,9 @@ console.log(products)
                 return <ProductCard item={item} DeleteProduct={onRemoveProduct} />
               })}
             </ProductWrapper>
+            <div className='btn'>
+              <button onClick={openModal}>Click to Add Products</button>
+            </div>
           </>
         )
       }

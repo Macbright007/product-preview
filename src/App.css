@@ -35,3 +35,26 @@
   background-color: black;
   color: #fff;
 }
+
+.btn{
+  /* border: 2px solid black; */
+  width: 100%;
+  max-width: 200px;
+  margin: 4rem auto;
+}
+.btn button{
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  background: #0360be;
+  padding: 12px 10px;
+  color: rgb(250, 248, 248);
+  font-weight: bold;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.btn button:hover {
+  background-color: black;
+  color: #fff;
+}

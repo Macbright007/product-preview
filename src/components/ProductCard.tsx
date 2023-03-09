@@ -3,11 +3,6 @@ import { CardContainer, CardContent, ImgCard } from "./Styles";
 import { Product } from './Type'
 
 type Props = {
-  // item:{
-  //   name: string,
-  //   price: string
-  //   // price: number
-  // }
   item: Product
   DeleteProduct: (productId:string) => void
 }

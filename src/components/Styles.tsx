@@ -2,12 +2,14 @@ import styled from "styled-components"
 
 // styling for navbar
 export const Nav = styled.nav`
-    // border: 2px solid black;
     padding: 7px 0px;
-    //  background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9));
-     background: linear-gradient(125deg, #000 57.7%, #960018 57.7%);
+    background: linear-gradient(125deg, #000 50.7%, #960018 57.7%);
     display: flex;
     justify-content: space-around;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
 
      h1{
         color: #fff;
@@ -30,16 +32,19 @@ export const Nav = styled.nav`
 
 // styling for search component
 export const SearchWrapper = styled.form`
-    //  border: 2px solid black;
      width: 100%;
      max-width: 600px;
-     margin: 2rem auto;
+     margin: 2rem;
+     position: fixed;
+     top: 10%;
+     z-index: 10;
+     left: 28%;
 
      input[type=search]{
+        background: transparent;
         border-top: 0px;
         border-left: 0px;
         border-right: 0px;
-        // border-radius: 7px;
         outline: none;
         padding: 9px 7px;
         width: 100%;
@@ -49,24 +54,41 @@ export const SearchWrapper = styled.form`
         font-size: 14px;
         font-weight: 700;
       }
+
+      @media(max-width: 950px){
+        left: 0;
+        max-width: 330px;
+      }
+      @media(max-width: 750px){
+        left: 0;
+        max-width: 300px;
+      }
 `
 
 // styling for productlist and product card
 export const ProductWrapper = styled.section`
-//   border: 2px solid red;
-  width: 100%;
-  max-width: 900px;
-  margin: 4.3rem auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 900px;
+    margin: 10rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+  @media(max-width: 950px){
+    max-width: 350px;
+    grid-template-columns: 1fr;
+  }
 `
 
 export const CardContainer = styled.div`
-  // border: 2px solid black;
-  margin-top: 30px;
-  padding: 10px;
-  width: 100%;
-  max-width: 250px;
+    margin-top: 45px;
+    padding: 10px;
+    width: 100%;
+    max-width: 250px;
+
+  @media(max-width: 950px){
+    margin-left: 2rem;
+  }
+  
 `;
 export const ImgCard = styled.div`
     border: 2px solid rgba(0, 0, 0, 0.803);
@@ -85,9 +107,9 @@ export const ImgCard = styled.div`
         right: 15px;
         font-size: 20px;
         cursor: pointer;
-        background: white;
+        background: #000;
         border-radius: 100%;
-        color: black;
+        color: #fff;
         font-weight: 800;
         width: 30px;
         height: 30px;
@@ -97,11 +119,17 @@ export const ImgCard = styled.div`
     }
 
     img{
-        min-height: 100%;
+        height: 100%;
         width: 100%;
         border-radius: 25px;
         object-fit: cover;
     }
+
+  @media(max-width: 950px){
+        height: 40vh;
+        max-width: 270px;
+  }
+    
 `;
 export const CardContent = styled.div`
   border: 2px solid rgba(0, 0, 0, 0.803);
@@ -118,12 +146,18 @@ export const CardContent = styled.div`
   p{
     margin-top: 8px;
   }
+
+  @media(max-width: 950px){
+    margin-left: 0.8rem;
+    width: 100%;
+  }
+
 `;
 
 // styling for footer
 
 export const FooterWrapper = styled.footer`
-    background: linear-gradient(125deg, #fff 57.7%, #000 57.7%);
+    background: linear-gradient(125deg, #fff 60.7%, #000 57.7%);
     text-align: center;
     padding: 10px 0;
     border: 2px solid black;
@@ -135,22 +169,12 @@ export const FooterWrapper = styled.footer`
     width: 100%;
 
     p{
-        // color: white;
         font-weight: 700;
         font-size: 18px;
     }
 `
 
 export const FormWrapper = styled.form`
-    // border: 2px solid black;
-    // background: blue;
-    // padding: 5rem;
-    // max-width: 600px;
-    // margin: auto;
-    // position: fixed;
-    // top: 0;
-    // left: 40%;
-
     width: 800px;
     height: 55vh;
     padding: 3rem;
@@ -158,14 +182,14 @@ export const FormWrapper = styled.form`
     background: #fff;
     color: #000;
     position: fixed;
-    top: 17%;
+    top: 22%;
     z-index: 10;
     border-top-right-radius: 15px;
     
     .close{
         position: fixed;
-        top: 17%;
-        right: 20.8%;
+        top: 22%;
+        right: 20.5%;
         background: red;
         color: #fff;
         font-weight: 800;
@@ -224,9 +248,8 @@ export const FormWrapper = styled.form`
     }
 
     @media(max-width: 950px){
-        // background: red;
         width: 270px;
-        top: 10%;
+        top: 25%;
         height: 65vh;
         overflow-y: auto;
 
@@ -237,8 +260,8 @@ export const FormWrapper = styled.form`
             position: fixed;
         }
         .close{
-            right: 1%;
-            top: 10%;
+            right: 3.3%;
+            top: 25%;
             width: 55px;
             height: 55px;
         }
@@ -249,11 +272,18 @@ export const FormWrapper = styled.form`
         }
        
     }
+
+    @media(max-width: 750px){
+        width: 240px;
+
+        .close{
+            right: 7%;
+        }
+    }
 `
 
 export const FormContent = styled.div`
     border-radius: 10px;
-    // border: 2px solid black;
     display: flex;
     justify-content: space-between;
 
@@ -262,27 +292,38 @@ export const FormContent = styled.div`
         margin-top: 2rem;
         margin-left: -2rem;
         width: 326px;
+        
+    }
+    
+    @media(max-width: 750px){
+        width: 300px;
     }
 `
 export const Background = styled.div`
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const InnerForm = styled.div`
     padding: 1rem;
-    // margin-bottom: 20px;
 
     label{
         color: grey;
         font-weight: 700;
     }
     input[type=text]{
+        border-radius: 7px;
+        border: 2px solid grey;
+        padding: 10px;
+        margin-top: 7px;
+        width: 95%;
+    }
+    input[type=number]{
         border-radius: 7px;
         border: 2px solid grey;
         padding: 10px;
@@ -297,6 +338,9 @@ export const InnerForm = styled.div`
         input[type=text]{
             margin-top: 2px;
         }
+        input[type=number]{
+            margin-top: 2px;
+        }
     }
 `
 export const InnerContent = styled.div`
@@ -306,8 +350,6 @@ export const InnerContent = styled.div`
     max-width: 600px;
     border-radius: 20px;
     background: #e6ecfc;
-    // margin-top: 2rem;
-   
     padding: 30px;
 
     label{
@@ -317,7 +359,6 @@ export const InnerContent = styled.div`
     }
     input[type=file]{
         padding: 10px;
-        // margin-top: 7rem;
         width: 100%;
     }
     input:focus{
@@ -325,7 +366,6 @@ export const InnerContent = styled.div`
     }
 
     .img-container{
-        // border: 2px solid black;
         width: 200px;
         height: 170px;
     }
@@ -339,7 +379,5 @@ export const InnerContent = styled.div`
     @media(max-width: 950px){
         height: 30vh;
         max-width: 800px;
-
-
     }
     `

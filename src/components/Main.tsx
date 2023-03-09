@@ -7,14 +7,12 @@ import { useState } from 'react';
 import { Product } from './Type'
 
 
-
-
-
-
-
 const Main = () => {
   const [showModal, setShowModal] = useState(false);
-  const [products, setProducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<Product[]>([
+   
+
+  ])
  
 
   const openModal = () => {

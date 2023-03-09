@@ -1,4 +1,3 @@
-import { resolve } from 'path'
 import React, { useState } from 'react'
 import { Background, InnerForm, FormWrapper, InnerContent, FormContent } from './Styles'
 import { Product } from './Type'
@@ -14,8 +13,7 @@ type Props = {
 const AddProductModal = ({ onSubmit, close }: Props) => {
 
   const [productName, setProductName] = useState("")
-  const [productPrice, setProductPrice] = useState("")
-  // const [productImage, setProductImage] = useState<File>()
+  const [productPrice, setProductPrice] = useState("") 
   const [previewImage, setPreviewImage] = useState<string >()
   const [loading, setLoading] = useState(false);
 
@@ -31,39 +29,11 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
 
   }
 
-  // const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     if (e.target.files && e.target.files.length > 0) { 
-  //       const file = e.target.files[0]
-  //       setProductImage(file);
-  //     }
-  // }
-
-  // const toBase64=(file: File)=> {
-  //   new Promise((resolve, reject)=> {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload=()=> resolve(reader.result);
-  //     reader.onerror =(error)=> reject(error)
-  //     return reader;
-  //   })
-  // }
-
-  // const onImageChange=(e:React.ChangeEvent<HTMLInputElement>)=> {
-  //   if(!e.target.files) return
-  //   const base64file = toBase64(e.target.files[0])
-  //   if(e.target.files && e.target.files[0]) {
-  //     setProductImage(base64file)
-  //   }
-  // }
-
-
-
-
+// function to get prouctd image
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const target = e.currentTarget as HTMLInputElement;
     const file = target.files?.[0];
-    // setProductImage(file)
     setPreviewImage(URL.createObjectURL(file as Blob))
   }
 
@@ -95,7 +65,6 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
                 type="file"
                 name="image"
                 id="image"
-                // onChange={onImageChange}
                 onChange={handleImageUpload}
               />
             </InnerContent>
@@ -116,7 +85,7 @@ const AddProductModal = ({ onSubmit, close }: Props) => {
             <InnerForm>
               <label htmlFor="username">Product-Price:</label>
               <input
-                type="text"
+                type="number"
                 name="price"
                 id="price"
                 placeholder="place enter product price"
